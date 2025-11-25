@@ -1,0 +1,24 @@
+{
+    "name": "agusngakdiajak/martin",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/",
+            "Core\\": "core/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kesavamas",
+            "email": "kesavadananjaya@gmail.com"
+        }
+    ],
+    "require": {
+        "php-di/php-di": "^7.1",
+        "twig/twig": "^3.0",
+        "symfony/validator": "^7.3",
+        "dotenv-org/phpdotenv-vault": "^0.2.4",
+        "symfony/console": "^7.3",
+        "symfony/http-foundation": "^7.3",
+        "symfony/security-csrf": "^7.3"
+    }
+}
