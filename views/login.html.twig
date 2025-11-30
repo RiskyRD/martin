@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Login</title>
-    </head>
-    <body>
-        <form method="post" action="/login">
-            <h1>Login</h1>
-            {% if errorsCredentials is defined %}
-                {{ errorsCredentials }}<br />
-            {% endif %}
-            <label for="email">Email:</label>
-            <input type="text" name="email" /><br />
-            {% if errors.email is defined %}
-                {{ errors.email }}<br />
-            {% endif %}
-            <label for="password">Password:</label>
-            <input type="password" name="password" /><br />
-            {% if errors.password is defined %}
-                {{ errors.password }}<br />
-            {% endif %}
-            <button type="submit">Login</button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Martin</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+
+<body>
+
+  <div class="container">
+      <div class="form-box active" id="login-form">
+        <form action="">
+          <h2>Login</h2>
+          <Input type="email" name="email" placeholder="Email" required>
+          <Input type="password" name="password" placeholder="Password" required>
+          <button type ="submit" name="Login">Login</button>  
         </form>
-    </body>
+      </div>
+  </div>
+
+</body>
 </html>
+
