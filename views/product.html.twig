@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <form method="post" action="/products/add">
+            <h2>Product Form</h2>
+            <input
+                name="name"
+                placeholder="Product Name"
+                value="{% if input.name is defined %}{{ input.name }}
+                       {% endif %}"
+            />
+            {% if errors.name is defined %}
+            <div class="error">
+                {{ errors.name }}
+            </div>
+            {% endif %}
+            <input
+                name="stock"
+                type="number"
+                placeholder="Product Stock"
+                value="{{ input['stock']|default('0') }}"
+            />
+            {% if errors.stock is defined %}
+            <div class="error">
+                {{ errors.stock }}
+            </div>
+            {% endif %}
+            <input
+                name="price"
+                placeholder="Product Price"
+                type="number"
+                value="{{ input['price']|default('0') }}"
+            />
+            {% if errors.price is defined %}
+            <div class="error">
+                {{ errors.price }}
+            </div>
+            {% endif %}
+            <button type="submit" name="Submit">Submit</button>
+        </form>
+    </body>
+</html>

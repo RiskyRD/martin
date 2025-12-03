@@ -18,7 +18,8 @@ class LoginController
     {
         $errors = $session->getFlashBag()->get('errors', []);
         $errorsCredentials = $session->getFlashBag()->get('errorsCredentials', [])[0] ?? null;
-        echo $render->render('login.html.twig', ['errors' => $errors, 'errorsCredentials' => $errorsCredentials]);
+        $input = $session->getFlashBag()->get('input', []);
+        echo $render->render('login.html.twig', ['errors' => $errors, 'errorsCredentials' => $errorsCredentials, 'input' => $input]);
     }
 
     public function loginUser(Request $request, Redirect $redirect, UserModel $userModel, Auth $auth)
@@ -45,13 +46,13 @@ class LoginController
             $errors[$field] = $violation->getMessage();
         }
         if (!empty($errors)) {
-            return $redirect->with(['errors' => $errors])->back();
+            return $redirect->with(['errors' => $errors, 'input' => $request->request->all()])->back();
         }
 
         $user = $userModel->getUserByEmail($request->request->get('email'));
 
         if (!$user || !password_verify($request->request->get('password'), $user['password'])) {
-            return $redirect->with(['errorsCredentials' => 'Invalid email or password.'])->back();
+            return $redirect->with(['errorsCredentials' => 'Invalid email or password.', 'input' => $request->request->all()])->back();
         }
 
         $auth->login($user['id']);
