@@ -48,7 +48,7 @@ class UserModel extends BaseModel implements \Core\Auth\User
 
     public function getAllUsers(): array
     {
-        $sql = "SELECT email,name,telephone,address,is_admin FROM users";
+        $sql = "SELECT id,email,name,telephone,address,is_admin FROM users";
         $stmt = $this->db->getConnection()->query($sql);
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
@@ -66,5 +66,12 @@ class UserModel extends BaseModel implements \Core\Auth\User
             ':telephone' => $userData['telephone'] ?? null,
             ':id' => $id,
         ]);
+    }
+
+    public function delete(int $id): bool
+    {
+        $sql = "DELETE FROM users WHERE id = :id";
+        $stmt = $this->db->getConnection()->prepare($sql);
+        return $stmt->execute([':id' => $id]);
     }
 }

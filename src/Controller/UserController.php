@@ -81,6 +81,7 @@ class UserController
     {
         $userId = (int)$request->getParam('id');
         $userData = $userModel->getUserById($userId);
+        unset($userData['password']);
         if (!$userData) {
             return $redirect->to('/notFound');
         }
@@ -106,7 +107,6 @@ class UserController
                 new Assert\Type('string'),
                 new Assert\NotBlank(),
                 new Assert\Email(),
-                new UniqueEmail(),
             ]),
             'name' =>
             new Assert\Sequentially([
@@ -130,6 +130,10 @@ class UserController
         $errors = [];
         $reqForm = $request->request->all();
         $reqForm['is_admin'] = $reqForm['role'] === 'admin' ? true : false;
+        $newUser = $userModel->getUserByEmail($reqForm['email']);
+        if ($newUser && $newUser['id'] != $userId) {
+            $errors['email'] = 'This email is already in use.';
+        }
         foreach ($violations as $violation) {
 
             $field = trim($violation->getPropertyPath(), '[]');
@@ -144,6 +148,17 @@ class UserController
             $reqForm['password'] = $userData['password']; // Retain existing password
         }
         $userModel->updateUser($userId, $reqForm);
+        return $redirect->to('/user');
+    }
+
+    public function deleteUser(Request $request, Redirect $redirect, UserModel $userModel)
+    {
+        $userId = (int)$request->getParam('id');
+        $userData = $userModel->getUserById($userId);
+        if (!$userData) {
+            return $redirect->to('/notFound');
+        }
+        $userModel->delete($userId);
         return $redirect->to('/user');
     }
 }

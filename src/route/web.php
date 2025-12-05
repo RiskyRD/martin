@@ -32,4 +32,5 @@ Router::get('/user', [UserController::class, 'listUsers']);
 Router::post('/users/create', [UserController::class, 'userCreate']);
 Router::get('/user/{id}/update', [UserController::class, 'updateUserView']);
 Router::post('/user/{id}/update', [UserController::class, 'userUpdate']);
+Router::post('/user/{id}/delete', [UserController::class, 'deleteUser']);
 // Router::post('/users/update', [UserController::class, 'userUpdate']);
