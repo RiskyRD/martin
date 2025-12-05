@@ -45,4 +45,26 @@ class UserModel extends BaseModel implements \Core\Auth\User
         $user = $stmt->fetch(\PDO::FETCH_ASSOC);
         return $user ?: null;
     }
+
+    public function getAllUsers(): array
+    {
+        $sql = "SELECT email,name,telephone,address,is_admin FROM users";
+        $stmt = $this->db->getConnection()->query($sql);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function updateUser(int $id, array $userData): bool
+    {
+        $sql = "UPDATE users SET name = :name, password = :password, email = :email, is_admin = :is_admin, address = :address, telephone = :telephone WHERE id = :id";
+        $stmt = $this->db->getConnection()->prepare($sql);
+        return $stmt->execute([
+            ':name' => $userData['name'],
+            ':password' => $userData['password'],
+            ':email' => $userData['email'],
+            ':is_admin' => $userData['is_admin'] ?? false,
+            ':address' => $userData['address'] ?? null,
+            ':telephone' => $userData['telephone'] ?? null,
+            ':id' => $id,
+        ]);
+    }
 }

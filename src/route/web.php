@@ -8,6 +8,7 @@ use App\Controller\ProductController;
 use App\Controller\ReportController;
 use App\Controller\TransactionController;
 use App\Controller\UserController;
+use Core\Route\Route;
 
 Router::get('/register', [RegisterController::class, 'registerPage']);
 Router::get('/login', [LoginController::class, 'loginPage']);
@@ -29,3 +30,6 @@ Router::get('/report', [ReportController::class, 'generateReport']);
 Router::get('/user/create', [UserController::class, 'userCreateView']);
 Router::get('/user', [UserController::class, 'listUsers']);
 Router::post('/users/create', [UserController::class, 'userCreate']);
+Router::get('/user/{id}/update', [UserController::class, 'updateUserView']);
+Router::post('/user/{id}/update', [UserController::class, 'userUpdate']);
+// Router::post('/users/update', [UserController::class, 'userUpdate']);

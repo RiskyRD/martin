@@ -122,9 +122,8 @@
                 </div>
 
                 <!-- FORM -->
-                <form class="user-form" id="userForm" method="post" action="/users/create">
+                <form class="user-form" id="userForm" method="post" action="/user/{{ id }}/update">
                     <div class="form-grid">
-
                         <!-- EMAIL -->
                         <div class="form-group">
                             <label for="email" class="form-label">
@@ -227,11 +226,13 @@
                                 >
                                     <option value="admin"
                                         {% if input.role is defined and input.role == 'admin' %}selected{% endif %}
+                                        {% if input.is_admin is defined and input.is_admin == 1 %}selected{% endif %}
                                     >
                                         Admin
                                     </option>
                                     <option value="cashier"
                                         {% if input.role is defined and input.role == 'cashier' %}selected{% endif %}
+                                        {% if input.is_admin is defined and input.is_admin == 0 %}selected{% endif %}
                                     >
                                         Cashier
                                     </option>
@@ -252,7 +253,7 @@
                     </div>
 
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                         
                     </div>
                 </form>

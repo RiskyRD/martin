@@ -6,6 +6,11 @@
   box-sizing: border-box;
   font-family: "Poppins", serif;
 }
+ 
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
 .main-body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
