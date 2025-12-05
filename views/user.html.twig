@@ -1,11 +1,268 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <body>
-        User
-    </body>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body class="main-body">
+    <div class="container">
+        <!-- Navigation Sidebar -->
+        <aside class="sidebar">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">M</div>
+                <span class="logo-text">MARTIN</span>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="nav-menu">
+                <!-- MAIN Section -->
+                <div class="nav-section">
+                    <div class="nav-label">MAIN</div>
+                    <a href="#dashboard" class="nav-item">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                        <span>Dashboard</span>
+                    </a>
+                </div>
+
+                <!-- PRODUCTS Section -->
+                <div class="nav-section">
+                    <div class="nav-label">PRODUCTS</div>
+                    <a href="#report" class="nav-item">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                        <span>Report</span>
+                    </a>
+                    <a href="#transaction" class="nav-item">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                            <line x1="1" y1="10" x2="23" y2="10"></line>
+                        </svg>
+                        <span>Transaction</span>
+                    </a>
+                    <a href="#product" class="nav-item">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                        <span>Product</span>
+                    </a>
+                </div>
+
+                <!-- AUTHENTICATION Section -->
+                <div class="nav-section">
+                    <div class="nav-label">AUTHENTICATION</div>
+                    <a href="#users" class="nav-item active">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span>Users</span>
+                    </a>
+                </div>
+
+                <!-- Spacer -->
+                <div class="nav-spacer"></div>
+
+                <!-- Logout Button -->
+                <div class="nav-logout">
+                    <a href="#logout" class="nav-item logout">
+                        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        <span>Log Out</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+<!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <div class="page-header">
+                    <div class="back-button">
+                        <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="page-title">User Create</h2>
+                        <div class="breadcrumb-wrapper">
+                        <div class="breadcrumb">Dashboard </div>
+                        <div class="breadcrumb"> / Users </div> 
+                        <div class="breadcrumb"> / Create</div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="user-form" id="userForm" method="post" action="/users/create">
+    <div class="form-grid">
+
+        <!-- EMAIL -->
+        <div class="form-group">
+            <label for="email" class="form-label">
+                Email <span class="required">*</span>
+            </label>
+            {% if errorsCredentials is defined %}
+            <div class="errorCredential">
+                {{ errorsCredentials }}
+            </div>
+            {% endif %}
+            <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input"
+                required
+                pattern=".*@.*"
+                title="Email harus mengandung karakter @"
+                value="{% if input.email is defined %}{{ input.email }}{% endif %}"
+                oninvalid="this.setCustomValidity('Email wajib diisi dan harus mengandung karakter @')"
+                oninput="this.setCustomValidity('')"
+            />
+            {% if errors.email is defined %}
+            <div class="error">
+                {{ errors.email }}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- NAME -->
+        <div class="form-group">
+            <label for="name" class="form-label">
+                Name <span class="required">*</span>
+            </label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-input"
+                required
+                title="Name wajib diisi"
+                value="{% if input.name is defined %}{{ input.name }}{% endif %}"
+                oninvalid="this.setCustomValidity('Name wajib diisi')"
+                oninput="this.setCustomValidity('')"
+            />
+            {% if errors.name is defined %}
+            <div class="error">
+                {{ errors.name }}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+            <label for="password" class="form-label">
+                Password <span class="required">*</span>
+            </label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-input"
+                required
+                title="Password wajib diisi"
+                value="{% if input.password is defined %}{{ input.password }}{% endif %}"
+                oninvalid="this.setCustomValidity('Password wajib diisi')"
+                oninput="this.setCustomValidity('')"
+            />
+            {% if errors.password is defined %}
+            <div class="error">
+                {{ errors.password }}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- TELEPHONE (optional) -->
+        <div class="form-group">
+            <label for="telephone" class="form-label">
+                Telephone
+            </label>
+            <input
+                type="tel"
+                id="telephone"
+                name="telephone"
+                class="form-input"
+                value="{{ input.telephone|default('') }}"
+            />
+        </div>
+
+        <!-- ADDRESS -->
+        <div class="form-group full-width">
+            <label for="address" class="form-label">
+                Address
+            </label>
+            <textarea
+                id="address"
+                name="address"
+                class="form-textarea"
+                rows="4"
+            >{{ input.address|default('') }}</textarea>
+        </div>
+
+        <!-- ROLE -->
+        <div class="form-group">
+            <label for="role" class="form-label">
+                Role <span class="required">*</span>
+            </label>
+            <div class="select-wrapper">
+                <select 
+                    id="role" 
+                    name="role" 
+                    class="form-select" 
+                    required
+                    title="Role wajib dipilih"
+                    oninvalid="this.setCustomValidity('Role wajib dipilih')"
+                    onchange="this.setCustomValidity('')"
+                >
+                    <option value="" disabled selected>Select role</option>
+                    <option value="admin"
+                        {% if input.role is defined and input.role == 'admin' %}selected{% endif %}>
+                        Admin
+                    </option>
+                    <option value="buyer"
+                        {% if input.role is defined and input.role == 'buyer' %}selected{% endif %}>
+                        Buyer
+                    </option>
+                </select>
+                <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+            {% if errors.role is defined %}
+            <div class="error">{{ errors.role }}</div>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="button" class="btn btn-secondary" id="cancelBtn" onclick="if(confirm('Apakah Anda yakin ingin membatalkan?')) window.history.back();">Cancel</button>
+    </div>
+    </form>
+
+            </div>
+        </main>
+    </div>
+    </div>
+</body>
 </html>

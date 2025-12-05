@@ -3,21 +3,21 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Martin</title>
+        <title>Login Page</title>
         <link rel="stylesheet" href="/assets/style.css" />
     </head>
 
-    <body>
-        <div class="container">
+    <body class="login-body">
+        <div class="login-container">
             <div class="form-box active" id="login-form">
                 <form action="/login" method="POST">
-                    <h2>Login</h2>
+                    <h2 class="login-tittle">Login</h2>
                     {% if errorsCredentials is defined %}
                     <div class="errorCredential">
                         {{ errorsCredentials }}
                     </div>
                     {% endif %}
-                    <input
+                    <input class="login-input"
                         name="email"
                         placeholder="Email"
                         value="{% if input.email is defined %}{{
@@ -30,7 +30,7 @@
                     </div>
                     {% endif %}
 
-                    <input
+                    <input class="login-input"
                         type="password"
                         name="password"
                         placeholder="Password"
@@ -43,7 +43,7 @@
                         {{ errors.password }}
                     </div>
                     {% endif %}
-                    <button type="submit" name="Login">Login</button>
+                    <button class="login-button" type="submit" name="Login">Login</button>
                 </form>
             </div>
         </div>
