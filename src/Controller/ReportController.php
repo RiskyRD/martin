@@ -13,7 +13,7 @@ class ReportController
 
     public function report(Render $render)
     {
-        echo $render->render('reportGenerate.html.twig');
+        echo $render->render('report.html.twig');
     }
 
     public function reportDetails(Render $render)
