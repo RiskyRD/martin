@@ -94,7 +94,161 @@
             </nav>
         </aside>
 
+         <!-- Main Content -->
+        <main class="main-content">
+            <div class = "content-wrapper">
+            <div class="alignment">
+                <div class="page-header">
+                    <div class="header-icon">
+                        <svg class="back-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="page-title">Add Product</h2>
+                    <div class="breadcrumb-wrapper">
+                        <div class="breadcrumb">Products</div>
+                        <div class="breadcrumb">/Add New</div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
+            <div class="content-grid">
+                <div class="product-information">
+                    <h2 class="section-title">Product Information</h2>
+                    
+                    <form class="product-form">
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label class="field-label">PRODUCT NAME</label>
+                                <input type="text" class="field-input" placeholder="e.g. Premium Widget" />
+                            </div>
+                            
+                            <div class="form-field">
+                                <label class="field-label">SKU</label>
+                                <input type="text" class="field-input" placeholder="e.g. SKU-001" />
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label class="field-label">CATEGORY</label>
+                                <select class="field-input field-select">
+                                    <option value="">Select a category</option>
+                                    <option value="electronics">Electronics</option>
+                                    <option value="clothing">Clothing</option>
+                                    <option value="food">Food</option>
+                                    <option value="books">Books</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-field">
+                                <label class="field-label">QUANTITY IN STOCK</label>
+                                <input type="number" class="field-input" placeholder="0" />
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label class="field-label">UNIT PRICE</label>
+                                <input type="number" class="field-input" placeholder="0.00" step="0.01" />
+                            </div>
+                            
+                            <div class="form-field">
+                                <label class="field-label">COST PRICE</label>
+                                <input type="number" class="field-input" placeholder="0.00" step="0.01" />
+                            </div>
+                        </div>
+
+                        <div class="form-field full-width">
+                            <label class="field-label">DESCRIPTION</label>
+                            <textarea class="field-input field-textarea" placeholder="Enter product description..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit">Add Product</button>
+                            <button type="button" class="btn-reset">Reset</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="products-list">
+                    <h2 class="section-title">Products List</h2>
+                    
+                    <div class="product-card">
+                        <div class="product-card-header">
+                            <h3 class="product-name">snickerdoodle</h3>
+                            <div class="product-sku">SKU: snckrdoodle</div>
+                        </div>
+                        
+                        <div class="product-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon fire">🔥</span>
+                                <span class="stat-value">3232</span>
+                                <span class="stat-label">in</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon box">📦</span>
+                                <span class="stat-value">100.0%</span>
+                                <span class="stat-label">margin</span>
+                            </div>
+                        </div>
+                        
+                        <div class="product-meta">$12123233232.00/stock</div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-card-header">
+                            <h3 class="product-name">Chocolate Chip Cookie</h3>
+                            <div class="product-sku">SKU: chchip</div>
+                        </div>
+                        
+                        <div class="product-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon fire">🔥</span>
+                                <span class="stat-value">1500</span>
+                                <span class="stat-label">in</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon box">📦</span>
+                                <span class="stat-value">85.5%</span>
+                                <span class="stat-label">margin</span>
+                            </div>
+                        </div>
+                        
+                        <div class="product-meta">$45000.00/stock</div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-card-header">
+                            <h3 class="product-name">Oatmeal Raisin</h3>
+                            <div class="product-sku">SKU: oatrsin</div>
+                        </div>
+                        
+                        <div class="product-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon fire">🔥</span>
+                                <span class="stat-value">890</span>
+                                <span class="stat-label">in</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon box">📦</span>
+                                <span class="stat-value">92.3%</span>
+                                <span class="stat-label">margin</span>
+                            </div>
+                        </div>
+                        
+                        <div class="product-meta">$28500.00/stock</div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 </body>
 </html>
