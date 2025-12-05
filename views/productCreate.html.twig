@@ -137,6 +137,7 @@
                                 name="name"
                                 class="form-input"
                                 title="Name required"
+                                required
                                 value="{% if input.name is defined %}{{ input.name }}{% endif %}"
                             />
 
@@ -159,6 +160,7 @@
                                 min="0"
                                 step="0.01"
                                 title="Price required"
+                                required
                                 value="{% if input.price is defined %}{{ input.price }}{% endif %}"
                             />
 
@@ -182,6 +184,7 @@
                                 min="0"
                                 step="1"
                                 title="Stock required"
+                                required
                                 value="{% if input.stock is defined %}{{ input.stock }}{% endif %}"
                             />
 
