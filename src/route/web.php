@@ -26,4 +26,6 @@ Router::get('/transaction', [TransactionController::class, 'transaction']);
 Router::get('/report', [ReportController::class, 'generateReport']);
 
 
-Router::get('/user', [UserController::class, 'user']);
+Router::get('/user/create', [UserController::class, 'userCreateView']);
+Router::get('/user', [UserController::class, 'listUsers']);
+Router::post('/users/create', [UserController::class, 'userCreate']);

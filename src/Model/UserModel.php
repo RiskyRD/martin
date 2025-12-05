@@ -7,13 +7,15 @@ class UserModel extends BaseModel implements \Core\Auth\User
 {
     public function saveUser(array $userData): bool
     {
-        $sql = "INSERT INTO users (name, password, email, isAdmin) VALUES (:name, :password, :email, :isAdmin)";
+        $sql = "INSERT INTO users (name, password, email, is_admin, address, telephone) VALUES (:name, :password, :email, :is_admin, :address, :telephone)";
         $stmt = $this->db->getConnection()->prepare($sql);
         return $stmt->execute([
             ':name' => $userData['name'],
             ':password' => password_hash($userData['password'], PASSWORD_BCRYPT),
             ':email' => $userData['email'],
-            ':isAdmin' => $userData['isAdmin'] ?? false,
+            ':is_admin' => $userData['is_admin'] ?? false,
+            ':address' => $userData['address'] ?? null,
+            ':telephone' => $userData['telephone'] ?? null,
         ]);
     }
 
