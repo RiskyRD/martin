@@ -11,4 +11,9 @@ class TransactionController
     {
         echo $render->render('transaction.html.twig');
     }
+
+    public function createTransaction(Render $render)
+    {
+        echo $render->render('transactionCreate.html.twig');
+    }
 }

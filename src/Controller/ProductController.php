@@ -57,4 +57,9 @@ class ProductController
             return $redirect->with(['errors' => $errors, 'input' => $request->request->all()])->back();
         }
     }
+
+    public function createProduct(Render $render)
+    {
+        echo $render->render('productCreate.html.twig');
+    }
 }

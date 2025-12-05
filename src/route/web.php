@@ -19,12 +19,16 @@ Router::post('/param-tester', [HomeController::class, 'paramTester'])->middlewar
 Router::get('/form-test', [HomeController::class, 'paramForm']);
 
 Router::get('/products', [ProductController::class, 'listProducts']);
+Router::get('/products/create', [ProductController::class, 'createProduct']);
 Router::post('/products/add', [ProductController::class, 'addProduct']);
 
 Router::get('/transaction', [TransactionController::class, 'transaction']);
+Router::get('/transaction/create', [TransactionController::class, 'createTransaction']);
 
 
-Router::get('/report', [ReportController::class, 'generateReport']);
+Router::get('/report', [ReportController::class, 'report']);
+// Router::get('/report/create', [ReportController::class, 'generateReport']);
+// Router::get('/report/details', [ReportController::class, 'reportDetails']);
 
 
 Router::get('/user/create', [UserController::class, 'userCreateView']);
@@ -33,4 +37,5 @@ Router::post('/users/create', [UserController::class, 'userCreate']);
 Router::get('/user/{id}/update', [UserController::class, 'updateUserView']);
 Router::post('/user/{id}/update', [UserController::class, 'userUpdate']);
 Router::post('/user/{id}/delete', [UserController::class, 'deleteUser']);
+
 // Router::post('/users/update', [UserController::class, 'userUpdate']);
