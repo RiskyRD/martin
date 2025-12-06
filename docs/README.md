@@ -56,5 +56,5 @@ php ./bin.php asset:symlink
 4. untuk running webserver
 
 ```
-php -S localhost:8000 public/
+php -S localhost:8000 -t public/
 ```
