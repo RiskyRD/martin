@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\UserModel;
 use App\Validator\UniqueEmail;
+use Core\Auth\Auth;
 use Core\HttpFoundation\Redirect;
 use Core\HttpFoundation\Request;
 use Core\View\Render;
@@ -70,10 +71,11 @@ class UserController
         return $render->render('user.html.twig');
     }
 
-    public function listUsers(Render $render, UserModel $userModel)
+    public function listUsers(Render $render, UserModel $userModel, Auth $auth)
     {
         $user = $userModel->getAllUsers();
-        echo $render->render('user.html.twig', ['users' => $user]);
+
+        echo $render->render('user.html.twig', ['users' => $user, 'currentUser' => $auth->getCurrentUser()]);
     }
 
     public function updateUserView(Render $render, Request $request, Redirect $redirect, UserModel $userModel, Session $session)

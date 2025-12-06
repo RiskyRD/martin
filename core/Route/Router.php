@@ -7,6 +7,7 @@ namespace Core\Route;
  * @package Core\Route
  * @method static Route get(string $path, Array $handler)
  * @method static Route post(string $path, Array $handler)
+ * @method static Route middleware(Array $middlewares)
  */
 class Router
 {

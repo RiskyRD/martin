@@ -18,12 +18,11 @@
 
                 <!-- Navigation Menu -->
                 <nav class="nav-menu">
-
                     <!-- PRODUCTS Section -->
                     <div class="nav-section">
                         <div class="nav-label">PRODUCTS</div>
 
-                        <a href="#report" class="nav-item">
+                        <a href="/report" class="nav-item">
                             <svg
                                 class="nav-icon"
                                 width="20"
@@ -44,7 +43,7 @@
                             <span>Report</span>
                         </a>
 
-                        <a href="#transaction" class="nav-item">
+                        <a href="/transaction" class="nav-item">
                             <svg
                                 class="nav-icon"
                                 width="20"
@@ -99,7 +98,7 @@
                     <div class="nav-section">
                         <div class="nav-label">AUTHENTICATION</div>
 
-                        <a href="#users" class="nav-item active">
+                        <a href="/user" class="nav-item active">
                             <svg
                                 class="nav-icon"
                                 width="20"
@@ -124,24 +123,32 @@
 
                     <!-- Logout -->
                     <div class="nav-logout">
-                        <a href="#logout" class="nav-item logout">
-                            <svg
-                                class="nav-icon"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                            >
-                                <path
-                                    d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
-                                ></path>
-                                <polyline points="16 17 21 12 16 7"></polyline>
-                                <line x1="21" y1="12" x2="9" y2="12"></line>
-                            </svg>
-                            <span>Log Out</span>
-                        </a>
+                        <form
+                            action="/logout"
+                            method="post"
+                            class="nav-item logout"
+                        >
+                            <button type="submit" class="logout-button">
+                                <svg
+                                    class="nav-icon"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
+                                    ></path>
+                                    <polyline
+                                        points="16 17 21 12 16 7"
+                                    ></polyline>
+                                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                                </svg>
+                                <span>Log Out</span>
+                            </button>
+                        </form>
                     </div>
                 </nav>
             </aside>
@@ -152,12 +159,13 @@
                 </div>
 
                 <div class="content-container">
+                    {% if currentUser.is_admin %}
                     <div class="table-header">
                         <a href="/user/create">
                             <button class="btn-new-user">New User +</button>
                         </a>
                     </div>
-
+                    {% endif %}
                     <div class="table-wrapper">
                         <table class="users-table">
                             <thead>
@@ -167,7 +175,9 @@
                                     <th>Telephone</th>
                                     <th>Address</th>
                                     <th>Role</th>
+                                    {%if currentUser.is_admin %}
                                     <th>Option</th>
+                                    {% endif %}
                                 </tr>
                             </thead>
                             <tbody>
@@ -182,6 +192,7 @@
                                             user.is_admin ? 'admin' : 'cashier'
                                         }}
                                     </td>
+                                    {% if currentUser.is_admin == true %}
                                     <td>
                                         <div class="action-buttons">
                                             <a
@@ -216,8 +227,9 @@
                                             </form>
                                         </div>
                                     </td>
-                                    {% endfor %}
+                                    {% endif %}
                                 </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>

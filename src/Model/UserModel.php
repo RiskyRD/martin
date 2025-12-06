@@ -13,7 +13,7 @@ class UserModel extends BaseModel implements \Core\Auth\User
             ':name' => $userData['name'],
             ':password' => password_hash($userData['password'], PASSWORD_BCRYPT),
             ':email' => $userData['email'],
-            ':is_admin' => $userData['is_admin'] ?? false,
+            ':is_admin' => $userData['is_admin'] ? 1 : 0,
             ':address' => $userData['address'] ?? null,
             ':telephone' => $userData['telephone'] ?? null,
         ]);
@@ -61,7 +61,7 @@ class UserModel extends BaseModel implements \Core\Auth\User
             ':name' => $userData['name'],
             ':password' => $userData['password'],
             ':email' => $userData['email'],
-            ':is_admin' => $userData['is_admin'] ?? false,
+            ':is_admin' => $userData['is_admin'] ? 1 : 0,
             ':address' => $userData['address'] ?? null,
             ':telephone' => $userData['telephone'] ?? null,
             ':id' => $id,

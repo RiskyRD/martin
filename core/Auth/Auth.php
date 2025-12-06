@@ -35,6 +35,9 @@ class Auth
     {
         if (!$this->currentUser) {
             $id = $this->session->get('user_id');
+            if (isset($id) === false) {
+                return null;
+            }
             $this->currentUser = $this->userModel->getUserById($id);
         }
         return $this->currentUser;
@@ -43,6 +46,11 @@ class Auth
     public function login(int $id)
     {
         $this->session->set('user_id', $id);
+    }
+
+    public function logout()
+    {
+        $this->session->remove('user_id');
     }
 
     public function regenerate()

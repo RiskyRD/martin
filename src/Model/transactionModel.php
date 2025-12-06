@@ -24,7 +24,7 @@ class TransactionModel extends BaseModel
     }
     public function getAllTransactions()
     {
-        $stmt = $this->db->getConnection()->prepare("SELECT t.id,u.name AS user_name,t.created_at  FROM transactions t JOIN users u ON t.user_id = u.id ORDER BY t.created_at DESC");
+        $stmt = $this->db->getConnection()->prepare("SELECT t.id,u.name AS user_name,DATE_FORMAT(t.created_at,'%Y-%m-%d') AS created_at FROM transactions t JOIN users u ON t.user_id = u.id ORDER BY t.created_at DESC");
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }

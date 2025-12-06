@@ -61,4 +61,10 @@ class LoginController
 
         $redirect->to('/products');
     }
+
+    public function logoutUser(Auth $auth, Redirect $redirect)
+    {
+        $auth->logout();
+        $redirect->to('/login');
+    }
 }

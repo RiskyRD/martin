@@ -128,6 +128,18 @@ a {
     color: #e74c3c;
 }
 
+.nav-item.logout button {
+    color: inherit;
+    font: inherit;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: transparent;
+    border: none;
+}
+
 .main-content {
   flex: 1;
   margin-left: 240px;
