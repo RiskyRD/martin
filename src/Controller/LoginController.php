@@ -59,6 +59,6 @@ class LoginController
         $auth->regenerate();
         $auth->regenerateCsrfToken();
 
-        $redirect->to('/');
+        $redirect->to('/products');
     }
 }

@@ -86,4 +86,22 @@ class TransactionModel extends BaseModel
 
         return $stmt->execute([':id' => $id]);
     }
+
+    public function getReportsByDateRange(string $startDate, string $endDate)
+    {
+        $sql = "SELECT count(*) AS total_quantity,sum(td.amount * pd.price) as total_price,DATE_FORMAT(t.created_at,'%Y-%m-%d') AS date
+                FROM transactions t
+                JOIN transaction_details td ON t.id = td.transaction_id
+                JOIN products pd ON td.product_id = pd.id
+                WHERE DATE(t.created_at) BETWEEN :startDate AND :endDate
+                GROUP BY DATE_FORMAT(t.created_at,'%Y-%m-%d');";
+
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->execute([
+            ':startDate' => $startDate,
+            ':endDate' => $endDate,
+        ]);
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

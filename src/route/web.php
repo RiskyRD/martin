@@ -10,10 +10,8 @@ use App\Controller\TransactionController;
 use App\Controller\UserController;
 use Core\Route\Route;
 
-Router::get('/register', [RegisterController::class, 'registerPage']);
 Router::get('/login', [LoginController::class, 'loginPage']);
 Router::post('/login', [LoginController::class, 'loginUser']);
-Router::post('/register', [RegisterController::class, 'registerUser']);
 Router::get('/', [HomeController::class, 'index']);
 Router::post('/param-tester', [HomeController::class, 'paramTester'])->middleware([App\Middleware\CsrfValid::class]);
 Router::get('/form-test', [HomeController::class, 'paramForm']);
@@ -32,7 +30,9 @@ Router::get('/transaction/{id}/create', [TransactionController::class, 'createTr
 Router::post('/transaction/{id}/create', [TransactionController::class, 'createTransactionWithId']);
 Router::post('/transaction/{id}/delete/detail', [TransactionController::class, 'deleteTransactionDetails']);
 
+Router::post('/generateReport', [ReportController::class, 'generateReport']);
 Router::get('/report', [ReportController::class, 'report']);
+
 // Router::get('/report/create', [ReportController::class, 'generateReport']);
 // Router::get('/report/details', [ReportController::class, 'reportDetails']);
 

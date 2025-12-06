@@ -10,7 +10,6 @@ class HomeController
 {
     public function index(Render $render, Auth $auth)
     {
-        echo var_export($auth->getCurrentUser(), true);
         echo $render->render('home.html.twig');
     }
 

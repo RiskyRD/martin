@@ -18,12 +18,11 @@
 
                 <!-- Navigation Menu -->
                 <nav class="nav-menu">
-
                     <!-- PRODUCTS Section -->
                     <div class="nav-section">
                         <div class="nav-label">PRODUCTS</div>
 
-                        <a href="#report" class="nav-item active">
+                        <a href="/report" class="nav-item active">
                             <svg
                                 class="nav-icon"
                                 width="20"
@@ -44,7 +43,7 @@
                             <span>Report</span>
                         </a>
 
-                        <a href="#transaction" class="nav-item">
+                        <a href="/transaction" class="nav-item">
                             <svg
                                 class="nav-icon"
                                 width="20"
@@ -146,7 +145,7 @@
                 </nav>
             </aside>
 
-             <main class="main-content">
+            <main class="main-content">
                 <div class="page-header">
                     <h1 class="page-title">Report</h1>
                 </div>
@@ -155,23 +154,29 @@
                     <!-- Filter Section -->
                     <div class="filter-section">
                         <h2 class="section-title">Date Range</h2>
-                        <form class="filter-form" onsubmit="event.preventDefault(); generateReport();">
+                        <form
+                            class="filter-form"
+                            action="/generateReport"
+                            method="POST"
+                        >
                             <div class="form-group">
                                 <label class="form-label">Start Date</label>
-                                <input 
-                                    type="date" 
-                                    class="form-input" 
+                                <input
+                                    type="date"
+                                    class="form-input"
                                     id="startDate"
-                                    value="2024-01-01"
+                                    name="startDate"
+                                    value="{{ input.startDate }}"
                                 />
                             </div>
                             <div class="form-group">
                                 <label class="form-label">End Date</label>
-                                <input 
-                                    type="date" 
-                                    class="form-input" 
+                                <input
+                                    type="date"
+                                    class="form-input"
                                     id="endDate"
-                                    value="2024-12-31"
+                                    name="endDate"
+                                    value="{{ input.endDate }}"
                                 />
                             </div>
                             <button type="submit" class="btn-generate">
@@ -185,23 +190,27 @@
                         <table class="summary-table">
                             <thead>
                                 <tr>
-                                    <th>Kategori</th>
-                                    <th>Barang</th>
+                                    <th>Tanggal</th>
+                                    <th>Total Terjual</th>
                                     <th>Harga</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for item in report %}
                                 <tr>
-                                    <td>Total</td>
-                                    <td id="totalQty">850</td>
-                                    <td id="totalPrice">Rp. 42.500.000</td>
+                                    <td>{{ item.date }}</td>
+                                    <td>{{ item.total_quantity }}</td>
+                                    <td>
+                                        Rp.
+                                        {{ item.total_price }}
+                                    </td>
                                 </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
                 </div>
             </main>
-
         </div>
     </body>
 </html>
