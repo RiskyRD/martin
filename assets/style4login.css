@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Poppins", sans-serif;
+            }
+
+            body {
+                min-height: 100vh;
+                background: linear-gradient(135deg, #2c3e50 0%, #1a2332 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 40px 20px;
+                overflow-y: hidden;
+                position: relative;
+            }
+
+            /* Background Elements */
+            .bg-decoration {
+                position: absolute;
+                border-radius: 50%;
+                opacity: 0.1;
+            }
+
+            .bg-circle-1 {
+                width: 400px;
+                height: 400px;
+                background: #ffff4f;
+                top: -200px;
+                left: -200px;
+            }
+
+            .bg-circle-2 {
+                width: 300px;
+                height: 300px;
+                background: #ffff4f;
+                bottom: -150px;
+                right: -150px;
+            }
+
+            .bg-circle-3 {
+                width: 200px;
+                height: 200px;
+                background: #ffffff;
+                top: 50%;
+                right: 10%;
+            }
+
+            /* Main Container */
+            .home-container {
+                position: relative;
+                z-index: 1;
+                text-align: center;
+                max-width: 600px;
+                width: 100%;
+            }
+
+            /* Logo Section */
+            .logo-section {
+                margin-bottom: 32px;
+            }
+
+            .logo-icon {
+                width: 80px;
+                height: 80px;
+                background-color: #ffff4f;
+                border-radius: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #2c3e50;
+                font-weight: 800;
+                font-size: 40px;
+                margin: 0 auto 20px;
+                box-shadow: 0 15px 40px rgba(255, 255, 79, 0.3);
+            }
+
+            .logo-text {
+                font-size: 36px;
+                font-weight: 800;
+                color: #ffffff;
+                letter-spacing: 0.2em;
+                margin-bottom: 8px;
+            }
+
+            .logo-subtitle {
+                font-size: 16px;
+                color: #b8bec3;
+                font-weight: 400;
+                letter-spacing: 0.05em;
+            }
+
+            /* Content Section */
+            .content-section {
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                border-radius: 16px;
+                padding: 36px 32px;
+                box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            }
+
+            .welcome-title {
+                font-size: 28px;
+                font-weight: 700;
+                color: #1a2332;
+                margin-bottom: 12px;
+            }
+
+            .welcome-text {
+                font-size: 15px;
+                color: #6b7280;
+                line-height: 1.6;
+                margin-bottom: 32px;
+            }
+
+            /* Button */
+            .btn-login {
+                display: inline-block;
+                padding: 14px 40px;
+                background-color: #1a2332;
+                color: #ffffff;
+                border: none;
+                border-radius: 10px;
+                font-size: 15px;
+                font-weight: 600;
+                cursor: pointer;
+                text-decoration: none;
+                box-shadow: 0 6px 18px rgba(26, 35, 50, 0.3);
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .logo-icon {
+                    width: 100px;
+                    height: 100px;
+                    font-size: 48px;
+                }
+
+                .logo-text {
+                    font-size: 36px;
+                }
+
+                .logo-subtitle {
+                    font-size: 16px;
+                }
+
+                .content-section {
+                    padding: 36px 28px;
+                }
+
+                .welcome-title {
+                    font-size: 26px;
+                }
+
+                .welcome-text {
+                    font-size: 14px;
+                }
+
+                .btn-login {
+                    padding: 14px 40px;
+                    font-size: 15px;
+                }
+
+                .bg-circle-1,
+                .bg-circle-2,
+                .bg-circle-3 {
+                    display: none;
+                }
+            }
