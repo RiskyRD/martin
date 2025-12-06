@@ -47,7 +47,6 @@ class UserController
             new Assert\Sequentially([
                 new Assert\Type('string'),
                 new Assert\Length(max: 15),
-                new Assert\NotBlank(),
             ]),
             'role' =>
             new Assert\Sequentially([
@@ -118,7 +117,6 @@ class UserController
             new Assert\Sequentially([
                 new Assert\Type('string'),
                 new Assert\Length(max: 15),
-                new Assert\NotBlank(),
             ]),
             'role' =>
             new Assert\Sequentially([

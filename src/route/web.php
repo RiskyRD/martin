@@ -19,12 +19,18 @@ Router::post('/param-tester', [HomeController::class, 'paramTester'])->middlewar
 Router::get('/form-test', [HomeController::class, 'paramForm']);
 
 Router::get('/products', [ProductController::class, 'listProducts']);
-Router::get('/products/create', [ProductController::class, 'createProduct']);
+Router::get('/products/create', [ProductController::class, 'createProductView']);
+Router::get('/products/{id}/update', [ProductController::class, 'updateProductView']);
 Router::post('/products/add', [ProductController::class, 'addProduct']);
+Router::post('/products/{id}/update', [ProductController::class, 'updateProduct']);
+Router::post('/products/{id}/delete', [ProductController::class, 'deleteProduct']);
 
 Router::get('/transaction', [TransactionController::class, 'transaction']);
-Router::get('/transaction/create', [TransactionController::class, 'createTransaction']);
-
+Router::get('/transaction/create', [TransactionController::class, 'createTransactionView']);
+Router::post('/transaction/create', [TransactionController::class, 'createTransaction']);
+Router::get('/transaction/{id}/create', [TransactionController::class, 'createTransactionWithIdView']);
+Router::post('/transaction/{id}/create', [TransactionController::class, 'createTransactionWithId']);
+Router::post('/transaction/{id}/delete/detail', [TransactionController::class, 'deleteTransactionDetails']);
 
 Router::get('/report', [ReportController::class, 'report']);
 // Router::get('/report/create', [ReportController::class, 'generateReport']);

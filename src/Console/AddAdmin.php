@@ -43,7 +43,7 @@ class AddAdmin extends Command
             'name' => $name,
             'email' => $email,
             'password' => $password,
-            'isAdmin' => true,
+            'is_admin' => true,
         ]);
         return Command::SUCCESS;
     }

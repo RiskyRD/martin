@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Products</title>
+        <title>Transaction Create</title>
+        <link rel="stylesheet" href="/assets/style.css" />
         <link rel="stylesheet" href="/assets/style2user.css" />
     </head>
     <body class="main-body">
@@ -65,7 +66,7 @@
                             <span>Report</span>
                         </a>
 
-                        <a href="#transaction" class="nav-item">
+                        <a href="#transaction" class="nav-item active">
                             <svg
                                 class="nav-icon"
                                 width="20"
@@ -88,7 +89,7 @@
                             <span>Transaction</span>
                         </a>
 
-                        <a href="/products" class="nav-item active">
+                        <a href="#product" class="nav-item">
                             <svg
                                 class="nav-icon"
                                 width="20"
@@ -167,80 +168,148 @@
                 </nav>
             </aside>
 
+            <!-- Main Content -->
             <main class="main-content">
-                <div class="page-header">
-                    <h1 class="page-title">Products</h1>
-                    <div class="breadcrumb-wrapper">
-                        <div class="breadcrumb">Dashboard</div>
-                        <div class="breadcrumb">/ Product</div>
+                <div class="content-wrapper">
+                    <div class="page-header">
+                        <div class="header-icon">
+                            <svg
+                                class="back-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <line x1="19" y1="12" x2="5" y2="12"></line>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                            </svg>
+                        </div>
+
+                        <div>
+                            <h2 class="page-title">Transaction Create</h2>
+                            <div class="breadcrumb-wrapper">
+                                <div class="breadcrumb">Dashboard</div>
+                                <div class="breadcrumb">/ Transaction</div>
+                                <div class="breadcrumb">/ Create</div>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- FORM -->
+                    <form
+                        class="user-form"
+                        id="userForm"
+                        method="post"
+                        action="/transaction/{{ id }}/create"
+                    >
+                        <div class="form-grid">
+                            <!-- NAME -->
+                            <div class="form-group full-width">
+                                <label for="id" class="form-label">
+                                    ID <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="id"
+                                    name="id"
+                                    class="form-input"
+                                    placeholder="Input id"
+                                    value="{% if input.id is defined %}{{
+                                        input.id
+                                    }}{% endif %}"
+                                />
+
+                                {% if errors.id is defined %}
+                                <div class="error">{{ errors.id }}</div>
+                                {% endif %}
+                            </div>
+
+                            <!-- QTY -->
+                            <div class="form-group full-width">
+                                <label for="amount" class="form-label">
+                                    Total Items <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="amount"
+                                    name="amount"
+                                    class="form-input"
+                                    placeholder="Add total items"
+                                    style="padding-block: 20px"
+                                    value="{% if input.amount is defined %}{{
+                                        input.amount ?? 0
+                                    }}{% endif %}"
+                                />
+
+                                {% if errors.amount is defined %}
+                                <div class="error">{{ errors.amount }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                Create
+                            </button>
+                        </div>
+                    </form>
                 </div>
+                <div>
+                    <div class="content-container" style="margin-top: 30px">
+                        <div class="table-wrapper">
+                            <table class="users-table">
+                                <thead>
+                                    <tr>
+                                        <th>Id Product</th>
+                                        <th>Total Items</th>
+                                        <th>Options</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for transactionDetails in
+                                    transactionDetails %}
+                                    <tr>
+                                        <td>
+                                            {{ transactionDetails.product_id }}
+                                        </td>
+                                        <td>{{ transactionDetails.amount }}</td>
 
-                <div class="content-container">
-                    <div class="table-header">
-                        <a href="/products/create">
-                            <button class="btn-new-user">Add Product +</button>
-                        </a>
-                    </div>
-
-                    <div class="table-wrapper">
-                        <table class="users-table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Stock</th>
-                                    <th>Price</th>
-                                    <th>Option</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for product in products %}
-                                <tr>
-                                    <td>{{ product.name }}</td>
-                                    <td>{{ product.stock }}</td>
-                                    <td>{{ product.price }}</td>
-
-                                    <td>
-                                        <div class="action-buttons">
-                                            <a
-                                                href="/products/{{
-                                                    product.id
-                                                }}/update"
-                                            >
-                                                <button
-                                                    class="btn-action edit"
-                                                    title="Edit"
+                                        <td>
+                                            <div class="action-buttons">
+                                                <form
+                                                    method="POST"
+                                                    action="/transaction/{{
+                                                        transactionDetails.id
+                                                    }}/delete/detail"
+                                                    onsubmit="return confirm('Are you sure you want to delete this product?');"
                                                 >
-                                                    <span class="icon-edit"
-                                                        >✏️</span
+                                                    <button
+                                                        class="btn-action delete"
+                                                        title="Delete"
                                                     >
-                                                </button>
-                                            </a>
-                                            <form
-                                                method="POST"
-                                                action="/products/{{
-                                                    product.id
-                                                }}/delete"
-                                                onsubmit="return confirm('Are you sure you want to delete this product?');"
-                                            >
-                                                <button
-                                                    class="btn-action delete"
-                                                    title="Delete"
-                                                >
-                                                    <span class="icon-trash"
-                                                        >🗑️</span
-                                                    >
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                    {% endfor %}
-                                </tr>
-                            </tbody>
-                        </table>
+                                                        <span class="icon-trash"
+                                                            >🗑️</span
+                                                        >
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                        {% endfor %}
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </main>
         </div>
+        <!-- penutup container -->
     </body>
 </html>

@@ -178,8 +178,15 @@
 
                 <div class="content-container">
                     <div class="table-header">
-                        <a href="/Transaction/add">
-                            <button class="btn-new-user">Add transactions +</button>
+                        <!-- <form action="/transaction/create" method="get">
+                            <button class="btn-new-user">
+                                Create New Transaction +
+                            </button>
+                        </form> -->
+                        <a href="/transaction/create">
+                            <button class="btn-new-user">
+                                Create New Transaction +
+                            </button>
                         </a>
                     </div>
 
@@ -187,55 +194,63 @@
                         <table class="users-table">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Total Items</th>
-                                    <th>Price</th>
+                                    <th>Id</th>
+                                    <th>Date</th>
+                                    <th>User</th>
+                                    <th>Option</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for user in users %}
+                                {% for transaction in transactions %}
                                 <tr>
-                                    <td>{{ user.email }}</td>
-                                    <td>{{ user.name }}</td>
-                                    <td>{{ user.telephone }}</td>
-                                    <td>{{ user.address }}</td>
-                                    <td>
-                                        {{
-                                            user.is_admin ? 'admin' : 'cashier'
-                                        }}
-                                    </td>
+                                    <td>{{ transaction.id }}</td>
+                                    <td>{{ transaction.created_at }}</td>
+                                    <td>{{ transaction.user_name }}</td>
+
                                     <td>
                                         <div class="action-buttons">
                                             <a
-                                                href="/user/{{
-                                                    user.id
-                                                }}/update"
+                                                href="/transaction/{{
+                                                    transaction.id
+                                                }}/create"
                                             >
                                                 <button
                                                     class="btn-action edit"
                                                     title="Edit"
                                                 >
-                                                    <span class="icon-edit"
-                                                        >✏️</span
+                                                    <div
+                                                        style="
+                                                            display: flex;
+                                                            justify-content: center;
+                                                            align-items: center;
+                                                        "
                                                     >
+                                                        <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            width="16"
+                                                            height="16"
+                                                            class="bi bi-cash"
+                                                            style="
+                                                                color: rgb(
+                                                                    30,
+                                                                    199,
+                                                                    30
+                                                                );
+                                                            "
+                                                            viewBox="0 0 16 16"
+                                                        >
+                                                            <path
+                                                                fill="currentColor"
+                                                                d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4"
+                                                            />
+                                                            <path
+                                                                fill="currentColor"
+                                                                d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2z"
+                                                            />
+                                                        </svg>
+                                                    </div>
                                                 </button>
                                             </a>
-                                            <form
-                                                method="POST"
-                                                action="/user/{{
-                                                    user.id
-                                                }}/delete"
-                                                onsubmit="return confirm('Are you sure you want to delete this user?');"
-                                            >
-                                                <button
-                                                    class="btn-action delete"
-                                                    title="Delete"
-                                                >
-                                                    <span class="icon-trash"
-                                                        >🗑️</span
-                                                    >
-                                                </button>
-                                            </form>
                                         </div>
                                     </td>
                                     {% endfor %}
