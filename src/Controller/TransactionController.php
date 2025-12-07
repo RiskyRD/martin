@@ -72,8 +72,8 @@ class TransactionController
 
         $transactionModel->addItemToTransaction($transactionId, $fields);
 
-        return $redirect->to('/transaction/' . $transactionId . '/create');
-        // return header("Location: /transaction/{$transactionId}/details");
+        return $redirect->to('/transactions/' . $transactionId . '/create');
+        // return header("Location: /transactions/{$transactionId}/details");
     }
 
     public function createTransactionWithIdView(Render $render, Redirect $redirect, Request $request, Session $session, TransactionModel $transactionModel)
@@ -133,8 +133,8 @@ class TransactionController
 
         $transactionModel->addItemToTransaction($id, $fields);
 
-        return $redirect->to('/transaction/' . $id . '/create');
-        // return header("Location: /transaction/{$transactionId}/details");
+        return $redirect->to('/transactions/' . $id . '/create');
+        // return header("Location: /transactions/{$transactionId}/details");
     }
 
     public function deleteTransactionDetails(Request $request, TransactionModel $transactionModel, Redirect $redirect, ProductModel $productModel)
