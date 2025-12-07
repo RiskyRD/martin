@@ -44,7 +44,7 @@
                             <span>Report</span>
                         </a>
 
-                        <a href="/transaction" class="nav-item active">
+                        <a href="/transactions" class="nav-item active">
                             <svg
                                 class="nav-icon"
                                 width="20"
@@ -99,7 +99,7 @@
                     <div class="nav-section">
                         <div class="nav-label">AUTHENTICATION</div>
 
-                        <a href="/user" class="nav-item">
+                        <a href="/users" class="nav-item">
                             <svg
                                 class="nav-icon"
                                 width="20"
@@ -186,7 +186,7 @@
                         class="user-form"
                         id="userForm"
                         method="post"
-                        action="/transaction/{{ id }}/create"
+                        action="/transactions/{{ id }}/create"
                     >
                         <div class="form-grid">
                             <!-- NAME -->
@@ -266,7 +266,7 @@
                                             <div class="action-buttons">
                                                 <form
                                                     method="POST"
-                                                    action="/transaction/{{
+                                                    action="/transactions/{{
                                                         transactionDetails.id
                                                     }}/delete/detail"
                                                     onsubmit="return confirm('Are you sure you want to delete this product?');"

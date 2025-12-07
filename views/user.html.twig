@@ -43,7 +43,7 @@
                             <span>Report</span>
                         </a>
 
-                        <a href="/transaction" class="nav-item">
+                        <a href="/transactions" class="nav-item">
                             <svg
                                 class="nav-icon"
                                 width="20"
@@ -98,7 +98,7 @@
                     <div class="nav-section">
                         <div class="nav-label">AUTHENTICATION</div>
 
-                        <a href="/user" class="nav-item active">
+                        <a href="/userss" class="nav-item active">
                             <svg
                                 class="nav-icon"
                                 width="20"
@@ -161,7 +161,7 @@
                 <div class="content-container">
                     {% if currentUser.is_admin %}
                     <div class="table-header">
-                        <a href="/user/create">
+                        <a href="/userss/create">
                             <button class="btn-new-user">New User +</button>
                         </a>
                     </div>
@@ -196,7 +196,7 @@
                                     <td>
                                         <div class="action-buttons">
                                             <a
-                                                href="/user/{{
+                                                href="/userss/{{
                                                     user.id
                                                 }}/update"
                                             >
@@ -211,7 +211,7 @@
                                             </a>
                                             <form
                                                 method="POST"
-                                                action="/user/{{
+                                                action="/users/{{
                                                     user.id
                                                 }}/delete"
                                                 onsubmit="return confirm('Are you sure you want to delete this user?');"

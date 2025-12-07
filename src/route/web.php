@@ -24,20 +24,20 @@ Router::middleware([AuthMiddleware::class])->post('/products/add', [ProductContr
 Router::middleware([AuthMiddleware::class])->post('/products/{id}/update', [ProductController::class, 'updateProduct']);
 Router::middleware([AuthMiddleware::class])->post('/products/{id}/delete', [ProductController::class, 'deleteProduct']);
 
-Router::middleware([AuthMiddleware::class])->get('/transaction', [TransactionController::class, 'transaction']);
-Router::middleware([AuthMiddleware::class])->get('/transaction/create', [TransactionController::class, 'createTransactionView']);
-Router::middleware([AuthMiddleware::class])->post('/transaction/create', [TransactionController::class, 'createTransaction']);
-Router::middleware([AuthMiddleware::class])->get('/transaction/{id}/create', [TransactionController::class, 'createTransactionWithIdView']);
-Router::middleware([AuthMiddleware::class])->post('/transaction/{id}/create', [TransactionController::class, 'createTransactionWithId']);
-Router::middleware([AuthMiddleware::class])->post('/transaction/{id}/delete/detail', [TransactionController::class, 'deleteTransactionDetails']);
+Router::middleware([AuthMiddleware::class])->get('/transactions', [TransactionController::class, 'transaction']);
+Router::middleware([AuthMiddleware::class])->get('/transactions/create', [TransactionController::class, 'createTransactionView']);
+Router::middleware([AuthMiddleware::class])->post('/transactions/create', [TransactionController::class, 'createTransaction']);
+Router::middleware([AuthMiddleware::class])->get('/transactions/{id}/create', [TransactionController::class, 'createTransactionWithIdView']);
+Router::middleware([AuthMiddleware::class])->post('/transactions/{id}/create', [TransactionController::class, 'createTransactionWithId']);
+Router::middleware([AuthMiddleware::class])->post('/transactions/{id}/delete/detail', [TransactionController::class, 'deleteTransactionDetails']);
 
 Router::middleware([AuthMiddleware::class])->post('/generateReport', [ReportController::class, 'generateReport']);
 Router::middleware([AuthMiddleware::class])->get('/report', [ReportController::class, 'report']);
 
 
-Router::middleware([AuthMiddleware::class])->get('/user', [UserController::class, 'listUsers']);
-Router::middleware([AuthMiddleware::class, IsAdminMiddleware::class])->get('/user/create', [UserController::class, 'userCreateView']);
+Router::middleware([AuthMiddleware::class])->get('/users', [UserController::class, 'listUsers']);
+Router::middleware([AuthMiddleware::class, IsAdminMiddleware::class])->get('/users/create', [UserController::class, 'userCreateView']);
 Router::middleware([AuthMiddleware::class, IsAdminMiddleware::class])->post('/users/create', [UserController::class, 'userCreate']);
-Router::middleware([AuthMiddleware::class, IsAdminMiddleware::class])->get('/user/{id}/update', [UserController::class, 'updateUserView']);
-Router::middleware([AuthMiddleware::class, IsAdminMiddleware::class])->post('/user/{id}/update', [UserController::class, 'userUpdate']);
-Router::middleware([AuthMiddleware::class, IsAdminMiddleware::class])->post('/user/{id}/delete', [UserController::class, 'deleteUser']);
+Router::middleware([AuthMiddleware::class, IsAdminMiddleware::class])->get('/users/{id}/update', [UserController::class, 'updateUserView']);
+Router::middleware([AuthMiddleware::class, IsAdminMiddleware::class])->post('/users/{id}/update', [UserController::class, 'userUpdate']);
+Router::middleware([AuthMiddleware::class, IsAdminMiddleware::class])->post('/users/{id}/delete', [UserController::class, 'deleteUser']);
