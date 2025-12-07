@@ -10,11 +10,40 @@ class DB
     private function __construct()
     {
         $config = require __DIR__ . '/../../config/db.php';
-        $this->connection = new \PDO(
-            "{$config['driver']}:host={$config['host']};dbname={$config['database']}",
-            $config['username'],
-            $config['password']
-        );
+
+        $driver = $config['driver'];
+        $host = $config['host'];
+        $dbname = $config['database'];
+        $username = $config['username'];
+        $password = $config['password'];
+
+        try {
+            $this->connection = new \PDO(
+                "$driver:host=$host;dbname=$dbname",
+                $username,
+                $password
+            );
+        } catch (\PDOException $e) {
+
+            if ($e->getCode() == 1049) {
+
+                $tempPdo = new \PDO(
+                    "$driver:host=$host",
+                    $username,
+                    $password
+                );
+
+                $tempPdo->exec("CREATE DATABASE IF NOT EXISTS `$dbname`");
+
+                $this->connection = new \PDO(
+                    "$driver:host=$host;dbname=$dbname",
+                    $username,
+                    $password
+                );
+            } else {
+                throw $e;
+            }
+        }
     }
 
     public static function getInstance()

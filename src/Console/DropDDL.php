@@ -13,6 +13,7 @@ use Symfony\Component\Console\Command\Command;
 class DropDDL extends Command
 {
     protected DB $db;
+
     public function __construct(DB $db)
     {
         parent::__construct();
@@ -22,8 +23,19 @@ class DropDDL extends Command
     public function __invoke()
     {
         echo "Dropping DDL commands...\n";
+
+        $config = require __DIR__ . '/../../config/db.php';
+        $dbname = $config['database'];
+
+        $conn = $this->db->getConnection();
+
+        $conn->exec("CREATE DATABASE IF NOT EXISTS `$dbname`");
+
+        $conn->exec("USE `$dbname`");
+
         $sql = file_get_contents(__DIR__ . '/../../db/ddl/down.sql');
-        $this->db->getConnection()->exec($sql);
+        $conn->exec($sql);
+
         echo "DDL commands dropped successfully.\n";
         return Command::SUCCESS;
     }

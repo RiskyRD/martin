@@ -59,7 +59,7 @@ class LoginController
         $auth->regenerate();
         $auth->regenerateCsrfToken();
 
-        $redirect->to('/products');
+        return $redirect->to('/products');
     }
 
     public function logoutUser(Auth $auth, Redirect $redirect)
