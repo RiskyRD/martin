@@ -49,7 +49,7 @@ Manfaat Aplikasi
    ```
    php -S localhost:8000 -t public/
    ```
-7. Buka pada browser: [text](http://localhost:8080/)
+7. Buka pada browser: [http://localhost:8080/](http://localhost:8080/)
 
 ## 📊 Dokumentasi Tambahan
 
