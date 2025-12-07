@@ -179,19 +179,21 @@
                             <!-- NAME -->
                             <div class="form-group full-width">
                                 <label for="id" class="form-label">
-                                    ID <span class="required">*</span>
+                                    Product <span class="required">*</span>
                                 </label>
 
-                                <input
-                                    type="text"
-                                    id="id"
-                                    name="id"
-                                    class="form-input"
-                                    placeholder="Input id"
-                                    value="{% if input.id is defined %}{{
-                                        input.id
-                                    }}{% endif %}"
-                                />
+                                <select id="id" name="id" class="form-input">
+                                    <option value="">-- Select Product --</option>
+
+                                    {% for product in products %}
+                                        <option 
+                                            value="{{ product.id }}"
+                                            {% if input.id is defined and input.id == product.id %}selected{% endif %}
+                                        >
+                                            {{ product.name }} (Stock: {{ product.stock }})
+                                        </option>
+                                    {% endfor %}
+                                </select>
 
                                 {% if errors.id is defined %}
                                 <div class="error">{{ errors.id }}</div>

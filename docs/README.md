@@ -87,3 +87,4 @@ Manfaat Aplikasi
 
 - [Flow Aplikasi](./FLOW_APP.md)
 - [Panduan Pengguna](./USER_GUIDE.md)
+- [Flowchart Program](./martin-flowchart.png)

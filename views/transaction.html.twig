@@ -178,6 +178,8 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
+                                    <th>Products</th>
+                                    <th>Total Price</th>
                                     <th>Date</th>
                                     <th>User</th>
                                     <th>Option</th>
@@ -187,6 +189,14 @@
                                 {% for transaction in transactions %}
                                 <tr>
                                     <td>{{ transaction.id }}</td>
+                                    <td>
+                                        <ul>
+                                            {% for p in transaction.products %}
+                                                <li>{{ p.name }} x {{ p.amount }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                    <td>Rp. {{ transaction.total_price|number_format(0, '.', ',') }}</td>
                                     <td>{{ transaction.created_at }}</td>
                                     <td>{{ transaction.user_name }}</td>
 

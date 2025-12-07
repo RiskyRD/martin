@@ -16,17 +16,39 @@ use Symfony\Component\Validator\Constraints\NotNull;
 class TransactionController
 {
     public function __construct() {}
+
     public function transaction(Render $render, TransactionModel $transactionModel)
     {
         $transactions = $transactionModel->getAllTransactions();
-        echo $render->render('transaction.html.twig', ['transactions' => $transactions]);
+
+        foreach ($transactions as &$t) {
+            $t['products'] = $transactionModel->getProductsForTransaction($t['id']);
+
+            // Calculate total price
+            $totalPrice = 0;
+            foreach ($t['products'] as $product) {
+                $totalPrice += $product['price'] * $product['amount'];
+            }
+            $t['total_price'] = $totalPrice;
+        }
+
+        echo $render->render('transaction.html.twig', [
+            'transactions' => $transactions
+        ]);
     }
 
-    public function createTransactionView(Render $render, Session $session)
+    public function createTransactionView(Render $render, Session $session, ProductModel $productModel)
     {
         $input = $session->getFlashBag()->get('input', []);
         $errors = $session->getFlashBag()->get('errors', []);
-        echo $render->render('transactionCreate.html.twig', ['input' => $input, 'errors' => $errors, 'transactionDetails' => []]);
+        $products = $productModel->getAllProducts();
+
+        echo $render->render('transactionCreate.html.twig', [
+            'input' => $input,
+            'errors' => $errors,
+            'transactionDetails' => [],
+            'products' => $products
+        ]);
     }
 
     public function createTransaction(TransactionModel $transactionModel, Request $request,  Redirect $redirect, ProductModel $productModel)
@@ -76,7 +98,7 @@ class TransactionController
         // return header("Location: /transactions/{$transactionId}/details");
     }
 
-    public function createTransactionWithIdView(Render $render, Redirect $redirect, Request $request, Session $session, TransactionModel $transactionModel)
+    public function createTransactionWithIdView(Render $render, Redirect $redirect, Request $request, Session $session, TransactionModel $transactionModel, ProductModel $productModel)
     {
         $id = (int) $request->getParam('id');
         if ($transactionModel->getTransactionById($id) === null) {
@@ -84,7 +106,19 @@ class TransactionController
         }
         $errors = $session->getFlashBag()->get('errors', []);
         $input = $session->getFlashBag()->get('input', []);
-        echo $render->render('transactionCreateWithId.html.twig', ['id' => $id, 'input' => $input, 'errors' => $errors, 'transactionDetails' => $transactionModel->getTransactionDetailsByTransactionId($id)]);
+        $products = $productModel->getAllProducts();
+        $productMap = [];
+        foreach ($products as $p) {
+            $productMap[$p['id']] = $p['name'];
+        }
+        echo $render->render('transactionCreateWithId.html.twig', [
+            'id' => $id,
+            'input' => $input,
+            'errors' => $errors,
+            'transactionDetails' => $transactionModel->getTransactionDetailsByTransactionId($id),
+            'products' => $products,
+            'productMap' => $productMap,
+        ]);
     }
 
     public function createTransactionWithId(TransactionModel $transactionModel, Request $request,  Redirect $redirect, ProductModel $productModel)

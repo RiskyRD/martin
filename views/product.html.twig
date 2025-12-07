@@ -170,7 +170,8 @@
                         <table class="users-table">
                             <thead>
                                 <tr>
-                                    <th>ID</th>                                    <th>Name</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
                                     <th>Stock</th>
                                     <th>Price</th>
                                     <th>Option</th>
@@ -182,8 +183,7 @@
                                     <td>{{ product.id }}</td>
                                     <td>{{ product.name }}</td>
                                     <td>{{ product.stock }}</td>
-                                    <td>{{ product.price }}</td>
-
+                                    <td>Rp. {{ product.price | number_format(0, ',', '.') }}</td>
                                     <td>
                                         <div class="action-buttons">
                                             <a

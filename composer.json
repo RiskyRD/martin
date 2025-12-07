@@ -26,9 +26,13 @@
       "php -r \"file_exists('.env') ?: copy('.env.example', '.env');\""
     ],
     "post-install-cmd": [
-      "php bin.php execute:ddl",
-      "php bin.php asset:symlink"
+      "php bin.php asset:symlink",
+      "composer config process-timeout 0",
+      "php bin.php execute:ddl"
     ],
     "serve": "php -S localhost:8000 -t public/"
+  },
+  "config": {
+    "process-timeout": 0
   }
 }

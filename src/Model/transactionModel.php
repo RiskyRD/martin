@@ -15,6 +15,20 @@ class TransactionModel extends BaseModel
         $this->auth = $auth;
     }
 
+    public function getProductsForTransaction(int $transactionId): array
+    {
+        $sql = "
+            SELECT p.name, p.price, td.amount
+            FROM transaction_details td
+            JOIN products p ON p.id = td.product_id
+            WHERE td.transaction_id = :id
+        ";
+
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->execute([':id' => $transactionId]);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public function newTransaction()
     {
         $data = [];
