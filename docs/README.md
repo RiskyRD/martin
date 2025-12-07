@@ -37,19 +37,20 @@ Manfaat Aplikasi
    composer install
    ```
 3. Hidupkan Apache/NGINX serta MySQL pada XAMPP/LARAGON
-4. Import database:
+4. Copy file .env.example lalu rename menjadi .env
+5. Import database:
    ```
    php ./bin.php execute:ddl
    ```
-5. Menyambungkan symlink dari assets/ ke public/assets:
+6. Menyambungkan symlink dari assets/ ke public/assets:
    ```
    php ./bin.php asset:symlink
    ```
-6. Menjalankan di webserver:
+7. Menjalankan di webserver:
    ```
    php -S localhost:8000 -t public/
    ```
-7. Buka pada browser: [http://localhost:8080/](http://localhost:8080/)
+8. Buka pada browser: [http://localhost:8080/](http://localhost:8080/)
 
 ## 📊 Dokumentasi Tambahan
 
