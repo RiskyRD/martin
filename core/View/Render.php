@@ -17,9 +17,16 @@ class Render
         $this->twig = new Environment($loader, [
             'debug' => true,
         ]);
+
         $this->twig->addExtension(new \Twig\Extension\DebugExtension());
+
+        // Make session globally available
         $this->twig->addGlobal('app', ['session' => $session]);
 
+        // Make currentUser globally available
+        $this->twig->addGlobal('currentUser', $auth->getCurrentUser());
+
+        // CSRF token function
         $this->twig->addFunction(new \Twig\TwigFunction('csrf_token', function () use ($auth) {
             return $auth->getCsrfToken();
         }));
