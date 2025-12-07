@@ -95,10 +95,11 @@
                     </div>
 
                     <!-- AUTHENTICATION Section -->
+                    {% if currentUser is defined and currentUser.is_admin == 1 %}
                     <div class="nav-section">
                         <div class="nav-label">AUTHENTICATION</div>
 
-                        <a href="/userss" class="nav-item active">
+                        <a href="/users" class="nav-item">
                             <svg
                                 class="nav-icon"
                                 width="20"
@@ -108,9 +109,7 @@
                                 stroke="currentColor"
                                 stroke-width="2"
                             >
-                                <path
-                                    d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
-                                ></path>
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="9" cy="7" r="4"></circle>
                                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
@@ -118,6 +117,7 @@
                             <span>Users</span>
                         </a>
                     </div>
+                    {% endif %}
 
                     <div class="nav-spacer"></div>
 
@@ -161,7 +161,7 @@
                 <div class="content-container">
                     {% if currentUser.is_admin %}
                     <div class="table-header">
-                        <a href="/userss/create">
+                        <a href="/users/create">
                             <button class="btn-new-user">New User +</button>
                         </a>
                     </div>
@@ -196,7 +196,7 @@
                                     <td>
                                         <div class="action-buttons">
                                             <a
-                                                href="/userss/{{
+                                                href="/users/{{
                                                     user.id
                                                 }}/update"
                                             >

@@ -4,28 +4,27 @@ namespace App\Middleware;
 
 use Core\Auth\Auth;
 use Core\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Core\HttpFoundation\Redirect;
 
 class IsAdminMiddleware implements \Core\HttpFoundation\Middleware
 {
     protected Auth $auth;
-    public function __construct(Auth $auth)
+    protected Redirect $redirect;
+
+    public function __construct(Auth $auth, Redirect $redirect)
     {
         $this->auth = $auth;
+        $this->redirect = $redirect;
     }
 
     public function handle(Request $request, callable $next)
-
     {
-        if (!$this->auth->getCurrentUser()['is_admin']) {
-            $response = new Response();
-            $response->setContent('Access denied. Admins only.');
-            $response->setStatusCode(Response::HTTP_FORBIDDEN);
+        $user = $this->auth->getCurrentUser();
 
-            $response->prepare($request);
-            $response->send();
-            return;
+        if (!$user || !$user['is_admin']) {
+            return $this->redirect->to('/products');
         }
+
         return $next($request);
     }
 }

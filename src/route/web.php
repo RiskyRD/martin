@@ -35,7 +35,7 @@ Router::middleware([AuthMiddleware::class])->post('/generateReport', [ReportCont
 Router::middleware([AuthMiddleware::class])->get('/report', [ReportController::class, 'report']);
 
 
-Router::middleware([AuthMiddleware::class])->get('/users', [UserController::class, 'listUsers']);
+Router::middleware([AuthMiddleware::class, IsAdminMiddleware::class])->get('/users', [UserController::class, 'listUsers']);
 Router::middleware([AuthMiddleware::class, IsAdminMiddleware::class])->get('/users/create', [UserController::class, 'userCreateView']);
 Router::middleware([AuthMiddleware::class, IsAdminMiddleware::class])->post('/users/create', [UserController::class, 'userCreate']);
 Router::middleware([AuthMiddleware::class, IsAdminMiddleware::class])->get('/users/{id}/update', [UserController::class, 'updateUserView']);
