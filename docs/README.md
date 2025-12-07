@@ -51,6 +51,15 @@ Manfaat Aplikasi
    php -S localhost:8000 -t public/
    ```
 8. Buka pada browser: [http://localhost:8080/](http://localhost:8080/)
+9. Login admin menggunakan:
+
+- email : admin@example.com
+- password: 12345678
+
+10. Login kasir menggunakan:
+
+- email : risky@example.com
+- password: 12345678
 
 ## 📊 Dokumentasi Tambahan
 
