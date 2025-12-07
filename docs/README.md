@@ -22,7 +22,7 @@ Manfaat Aplikasi
 
 ## ⚙️ Teknologi yang Digunakan
 
-- Backend: Native PHP
+- Backend: Native PHP, Composer (untuk Library)
 - Frontend: HTML5, CSS3, JavaScript
 - Database: MySQL / MariaDB
 
@@ -30,36 +30,58 @@ Manfaat Aplikasi
 
 1. Clone repository:
    ```bash
-   git clone https://github.com/username/project-name.git
+   git clone https://github.com/RiskyRD/martin
+   cd martin
    ```
-2. Install Library:
+2. Hidupkan Apache/NGINX & MySQL pada XAMPP/LARAGON
+3. Install dependency:
    ```
    composer install
    ```
-3. Hidupkan Apache/NGINX serta MySQL pada XAMPP/LARAGON
-4. Copy file .env.example lalu rename menjadi .env
-5. Import database:
+4. Menjalankan di webserver:
    ```
-   php ./bin.php execute:ddl
+   composer serve
    ```
-6. Menyambungkan symlink dari assets/ ke public/assets:
+5. Opsi one-liner untuk developer
    ```
-   php ./bin.php asset:symlink
+   git clone https://github.com/username/project-name.git && cd project-name && composer install && composer serve
    ```
-7. Menjalankan di webserver:
-   ```
-   php -S localhost:8000 -t public/
-   ```
-8. Buka pada browser: [http://localhost:8080/](http://localhost:8080/)
-9. Login admin menggunakan:
+6. Buka pada browser: [http://localhost:8080/](http://localhost:8080/)
+7. Login admin menggunakan:
 
 - email : admin@example.com
 - password: 12345678
 
-10. Login kasir menggunakan:
+8. Login kasir menggunakan:
 
 - email : risky@example.com
 - password: 12345678
+
+## 🛠️ TroubleShooting Umum
+
+1. Periksa/edit file .env
+
+   ```ini
+    DB_HOST=127.0.0.1
+    DB_DATABASE=martin
+    DB_USERNAME=root
+    DB_PASSWORD=
+    APP_ENV=local
+    APP_DEBUG=true
+   ```
+
+   Sesuaikan username dan password dengan database lokal masing-masing
+
+2. Run command per bagian:
+   ```
+   git clone https://github.com/RiskyRD/martin
+   cd martin
+   composer install
+   copy .env.example .env
+   php bin.php execute:ddl
+   php bin.php asset:symlink
+   php -S localhost:8000 -t public/
+   ```
 
 ## 📊 Dokumentasi Tambahan
 
